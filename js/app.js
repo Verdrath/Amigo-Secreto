@@ -5,6 +5,11 @@ function adicionar() {
     if (amigo.value.trim() === '') {
         alert('Campo não preenchdio');
         return;
+    } 
+
+    if (/\d/.test(amigo.value.trim())) {
+        alert('Números não são permitidos');
+        return;
     }
 
     let nomeNormalizado = amigo.value.trim().toLowerCase();
