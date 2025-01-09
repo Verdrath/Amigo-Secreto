@@ -2,23 +2,26 @@ let amigos = [];
 
 function adicionar() {
     let amigo = document.getElementById('nome-amigo');
-    if (amigo.value == '') {
+    if (amigo.value.trim() === '') {
         alert('Campo não preenchdio');
         return;
     }
 
-    if (amigos.includes(amigo.value)) {
+    let nomeNormalizado = amigo.value.trim().toLowerCase();
+
+    if (amigos.includes(nomeNormalizado)) {
         alert('Nome já adicionado na lista');
         return;
     }
 
     let lista = document.getElementById('lista-amigos');
 
-    amigos.push(amigo.value);
-    if (lista.textContent == '') {
-        lista.textContent = amigo.value;
+    amigos.push(nomeNormalizado);
+
+    if (lista.textContent === '') {
+        lista.textContent = amigo.value.trim();
     } else {
-        lista.textContent = lista.textContent + ', ' + amigo.value;
+        lista.textContent = lista.textContent + ', ' + amigo.value.trim();
     }
     amigo.value = '';
 }
@@ -31,6 +34,7 @@ function sortear() {
 
     embaralhar(amigos);
     let sorteio = document.getElementById('lista-sorteio')
+    sorteio.innerHTML = '';
     for (let i = 0; i < amigos.length; i++) {
         if (i == amigos.length - 1) {
             sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' ---> ' + amigos[0] + '<br>';
