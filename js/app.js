@@ -20,6 +20,11 @@ function adicionar() {
 }
 
 function sortear() {
+    if (amigos.length < 4) {
+        alert ('É necessário no mínimo 4 amigos para iniciar o sorteio');
+        return;
+    }
+
     embaralhar(amigos);
     let sorteio = document.getElementById('lista-sorteio')
     for (let i = 0; i < amigos.length; i++) {
